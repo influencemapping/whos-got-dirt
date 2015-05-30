@@ -1,0 +1,10 @@
+{
+    "queries": {
+        "q0": {
+            "limit": 5,
+            "name~=": "Big Corp",
+            "type": "popolo:Organization",
+            "*": null
+        }
+    }
+}
