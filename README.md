@@ -38,6 +38,22 @@ Some simple conventions for the API could be:
 
 * Proposal: re-use MQL instead of the reconciliation API, because it supports graph queries.
 
+Example:
+
+```json
+{
+    "queries": [
+        {
+            "name~=": "Big Corp",
+            "type": "popolo:Organization",
+            "limit": 5
+        }
+    ]
+}
+```
+
+``queries`` is a list to support bulk requests in the future, but the dictionary inside of it is a simple MQL query.
+
 ### Response format
 
 Given the diverse nature of data providers and use cases, we probably need to support different response levels:
@@ -71,3 +87,15 @@ It does not currently have a notion of ``Companies``, nor does it define relevan
 * International Consortium of Investigative Journalists and the Organized Crime and Corruption Reporting Project 
 * Consumer-side apps: detective.io, kumu.io, linkurio.us
 * Producer-side apps: Overview, DocumentCloud, PopIt, Investigative Dashboard, CrocTail
+
+
+
+
+
+#### Notes from the meeting
+
+* User groups not worth differentiating: journalists, lawyers -- more interesting to look at the process/activities.
+* Users act as lone wolves more than in collaborative fashion (exception WSJ, OCCRP)
+* The dream: a collaborative real-time company structure/graph 
+* Priorities of activities: search, reconciliation, enrichment 
+* Queries: simple property searches, very simple graph searches (JOIN), full graph searches (paths, long traversal)
