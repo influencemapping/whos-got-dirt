@@ -15,9 +15,13 @@
                             "scheme": "DUNS"
                         }
                     ],
-                    "jurisdiction": "Delaware (United States)",
                     "name": "Big Corporation",
-                    "score": 14.601182
+                    "score": 14.601182,
+                    "sources": [
+                      {
+                        "url": "https://delecorp.delaware.gov/eCorp/LoginAnnualReportsCLF"
+                      }
+                    ]
                 },
                 {
                     "contact_details": [
@@ -28,24 +32,44 @@
                         }
                     ],
                     "founding_date": "2000-01-01",
-                    "id": "http://dirtlist.com//companies/us_ny/333666",
+                    "id": "http://dirtlist.com/companies/us_ny/333666",
                     "name": "Big Inc",
-                    "score": 13.703995
+                    "score": 13.703995,
+                    "sources": [
+                      {
+                        "url": "http://appext20.dos.ny.gov/corp_public/CORPSEARCH.ENTITY_INFORMATION?p_nameid=0&p_corpid=3268067&p_entity_name=dummy&p_name_type=%25&p_search_type=BEGINS&p_srch_results_page=0"
+                      }
+                    ]
                 },
                 {
-                    "id": "http://dirtlist.com//companies/gb/0987654",
+                    "id": "http://dirtlist.com/companies/gb/0987654",
                     "name": "Big Corp Ltd",
-                    "score": 12.443
+                    "score": 12.443,
+                    "sources": [
+                      {
+                        "url": "http://data.companieshouse.gov.uk/doc/company/07444723.json"
+                      }
+                    ]
                 },
                 {
-                    "id": "http://dirtlist.com//companies/fr/182475682",
+                    "id": "http://dirtlist.com/companies/fr/182475682",
                     "name": "Big Corp Ltd",
-                    "score": 10.45
+                    "score": 10.45,
+                    "sources": [
+                      {
+                        "url": "http://foo.com/1234"
+                      }
+                    ]
                 },
                 {
-                    "id": "http://dirtlist.com//companies/bm/34526",
+                    "id": "http://dirtlist.com/companies/bm/34526",
                     "name": "Big Ltd",
-                    "score": 10.45
+                    "score": 10.45,
+                    "sources": [
+                      {
+                        "url": "http://bar.com/xyz"
+                      }
+                    ]
                 }
             ]
         }
