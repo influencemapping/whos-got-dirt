@@ -20,7 +20,13 @@ This project aims to define a common way of querying a variety of data sources a
 * Use cases for the [Influence Mapping Data Specification](https://docs.google.com/document/d/1PBH9WvwiJ899hJHCxoEdg6Ty6HHF21xYxi5QGgv5rak/edit#).
 * Use cases for the [trade negotiations case study](https://docs.google.com/document/d/11FMG2KlNigZkMhmdlHo1KynNAP8cY4hYEJCtYXBPsCI/edit).
 
-## Key problems / modules
+## Proposed modules
+
+Some simple conventions for the API could be: 
+
+* Use HTTP and JSON, define a single endpoint and use HATEOAS from there.
+* Re-use as much spec as possible (Popolo, Freebase, ...)
+* Define different levels of compliance (e.g. so that databases that do not support graph queries can express their capabilities). 
 
 ### Query API
 
