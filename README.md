@@ -5,10 +5,12 @@ This project aims to define a common way of querying a variety of data sources a
 ## Existing efforts
 
 * [Popolo](http://www.popoloproject.com/) data standard for people and organizations.
-* [IATI OrgID](http://iatistandard.org/201/codelists/OrganisationRegistrationAgency/) scheme for company identification.
+* Linked Data, [Linked Data Fragments](http://linkeddatafragments.org/), FOAF, [SPARQL](http://www.w3.org/TR/rdf-sparql-query/)
 * OpenRefine [Reconciliation API](https://github.com/OpenRefine/OpenRefine/wiki/Reconciliation-Service-API) for fuzzy entity matching.
-* [Metaweb Query Language](http://wiki.freebase.com/wiki/MQL), a more sophisticated query mechanism which supports matching entities in terms of their connections to other nodes in a graph.
+* [Metaweb Query Language](http://wiki.freebase.com/wiki/MQL), a more sophisticated query mechanism which supports matching entities in terms of their connections to other nodes in a graph. Also: [CYPHER](http://neo4j.com/developer/cypher-query-language/).
 * Survey of [partner project data models](https://docs.google.com/spreadsheets/d/1on99aF9QVWOwqZDtla9RLX5Wza6MHxbb4apZwbtHK-w/edit).
+* [IATI OrgID](http://iatistandard.org/201/codelists/OrganisationRegistrationAgency/) scheme for company identification.
+* [OpenCorporates API](https://api.opencorporates.com/), [LittleSis API](http://api.littlesis.org/).
 
 ## Discussion pieces
 
@@ -27,6 +29,7 @@ Some simple conventions for the API could be:
 * Use HTTP and JSON, define a single endpoint and use HATEOAS from there.
 * Re-use as much spec as possible (Popolo, Freebase, ...)
 * Define different levels of compliance (e.g. so that databases that do not support graph queries can express their capabilities). 
+* Speak of consumers and producers, rather than client/server.
 
 ### Query API
 
@@ -42,14 +45,20 @@ Some simple conventions for the API could be:
 
 * Proposal: separate "record" and "result envelope"
     * Result envelope holds scoring, provenance, licensing info
-    * (Optional) record would be Popolo
+    * (Optional) record would be Popolo or DublinCore?
 
 ## Getting it adopted
 
+* Build a set of proxies around existing data sources (i.e. partners, but also ICIJ Offshore, CorpWatch CrocTail - even WhoIs)
+* Prototype client applications around different patterns of use
+    * Search: simple lookup, return all matchin results
+    * Enrich: add edges to a graph in a visual utility
+    * Lead list: generate a set of graph snippets matching a particular pattern
+    * Notification: a scheduled job to track changes in service responses
 
 ### Who should be involved?
 
 * Partners of Influence Mappers (OpenCorporates, Poderopedia, LittleSis, OpenNorth, American Academy)
-* International Consortium of Investigative Journalists and the Organized Crime and Corruption Reporting Project (Investigative Dashboard)
-* Client-side apps: detective.io, kumu.io, linkurio.us
-* Core apps: Overview
+* International Consortium of Investigative Journalists and the Organized Crime and Corruption Reporting Project 
+* Consumer-side apps: detective.io, kumu.io, linkurio.us
+* Producer-side apps: Overview, DocumentCloud, PopIt, Investigative Dashboard, CrocTail
