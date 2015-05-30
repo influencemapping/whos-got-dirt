@@ -47,6 +47,12 @@ Some simple conventions for the API could be:
     * Result envelope holds scoring, provenance, licensing info
     * (Optional) record would be Popolo or DublinCore?
 
+### Data model extensions
+
+While Popolo provides a data model for ``Persons``, ``Organizations`` and ``Memberships``, it is mainly structured around parliamentary information use cases.
+
+It does not currently have a notion of ``Companies``, nor does it define relevant connection types such as ``Control`` (e.g. for ownership) and ``Transaction`` (e.g. for contracts). For a more detailed analysis of potential connection types, see [James' inventory of terms](https://docs.google.com/spreadsheets/d/1on99aF9QVWOwqZDtla9RLX5Wza6MHxbb4apZwbtHK-w/edit#gid=917587019).
+
 ## Getting it adopted
 
 * Build a set of proxies around existing data sources (i.e. partners, but also ICIJ Offshore, CorpWatch CrocTail - even WhoIs)
