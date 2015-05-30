@@ -1,6 +1,6 @@
 # Who's got dirt?
 
-This project aims to define a common way of querying a variety of data sources about information regarding people and companies. The goal is to enable easy lookup of entities across multiple databases, and to support the integration and enrichment of entity-related data.
+This project aims to define a common way of querying a variety of data providers about information regarding people and companies. The goal is to enable easy lookup of entities across multiple databases, and to support the integration and enrichment of entity-related data.
 
 ## Existing efforts
 
@@ -36,12 +36,15 @@ Some simple conventions for the API could be:
 * Asking for information about an entity
 * Asking for entities in terms of their connections
 
+* Proposal: re-use MQL instead of the reconciliation API, because it supports graph queries.
+
 ### Response format
 
-* Different response levels
-    * Full data: the API will return a full, structured data record or set of records to match the query.
-    * Document/reference list - data maintained by the service may not be fully structured, so the returned information would be limited to document references which can be accessed by a researcher.
-    * Information holder contact, in scenarios where the result data itself cannot be shared, contact information for the person holding the relevant material should be indicated.
+Given the diverse nature of data providers and use cases, we probably need to support different response levels:
+
+* Full data: the API will return a full, structured data record or set of records to match the query.
+* Document/reference list - data maintained by the service may not be fully structured, so the returned information would be limited to document references which can be accessed by a researcher.
+* Information holder contact, in scenarios where the result data itself cannot be shared, contact information for the person holding the relevant material should be indicated.
 
 * Proposal: separate "record" and "result envelope"
     * Result envelope holds scoring, provenance, licensing info
@@ -51,11 +54,11 @@ Some simple conventions for the API could be:
 
 While Popolo provides a data model for ``Persons``, ``Organizations`` and ``Memberships``, it is mainly structured around parliamentary information use cases.
 
-It does not currently have a notion of ``Companies``, nor does it define relevant connection types such as ``Control`` (e.g. for ownership) and ``Transaction`` (e.g. for contracts). For a more detailed analysis of potential connection types, see [James' inventory of terms](https://docs.google.com/spreadsheets/d/1on99aF9QVWOwqZDtla9RLX5Wza6MHxbb4apZwbtHK-w/edit#gid=917587019).
+It does not currently have a notion of ``Companies``, nor does it define relevant connection types such as ``Control`` (e.g. for ownership) and ``Transaction`` (e.g. for contracts). For a more detailed analysis of potential connection types, see [James' inventory of terms](https://docs.google.com/spreadsheets/d/1on99aF9QVWOwqZDtla9RLX5Wza6MHxbb4apZwbtHK-w/edit#gid=917587019).  
 
 ## Getting it adopted
 
-* Build a set of proxies around existing data sources (i.e. partners, but also ICIJ Offshore, CorpWatch CrocTail - even WhoIs)
+* Build a set of proxies around existing data providers (i.e. partners, but also ICIJ Offshore, CorpWatch CrocTail - even WhoIs)
 * Prototype client applications around different patterns of use
     * Search: simple lookup, return all matchin results
     * Enrich: add edges to a graph in a visual utility
