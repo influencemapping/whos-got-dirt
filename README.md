@@ -1,6 +1,10 @@
 # Who's got dirt?
 
-This project aims to define a common way of querying a variety of data providers about information regarding people and companies. The goal is to enable easy lookup of entities across multiple databases, and to support the integration and enrichment of entity-related data.
+Many (open) databases publish information about companies, institutions and people to the web. This might include details about company ownership, asset ownership, political finance, government contracts, and many other sources of information about political and economic influence.
+
+Yet our story about how researchers would access these databases is incomplete: would a journalist visit all possible data sites each time they want to look up a set of people or companies? We want to automate this lookup by making sure many of our sites support one simple API call for asking: who knows something about this entity, who's got dirt?
+
+This repository defines a common way of querying data providers about people and companies. The goal is to make lookups of entities across multiple databases easy, and to support consumer tools when they have to merge the data they find into the data they already have.
 
 ## What is it for?
 
