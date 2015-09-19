@@ -1,5 +1,7 @@
 # Who's got dirt?
 
+*Note: This document is an early draft, that will be updated with our more recent thinking soon.*
+
 Many (open) databases publish information about companies, institutions and people to the web. This might include details about company ownership, asset ownership, political finance, government contracts, and many other sources of information about political and economic influence.
 
 Yet our story about how researchers would access these databases is incomplete: would a journalist visit all possible data sites each time they want to look up a set of people or companies? We want to automate this lookup by making sure many of our sites support one simple API call for asking: who knows something about this entity, who's got dirt?
@@ -17,7 +19,7 @@ The standard will allow consumer tools to automatically search and integrate inf
 
 ### Detailed use cases
 
-There are also more detailed documents to detail use cases for the [Influence Mapping Data Specification](https://docs.google.com/document/d/1PBH9WvwiJ899hJHCxoEdg6Ty6HHF21xYxi5QGgv5rak/edit#) and for the [trade negotiations case study](https://docs.google.com/document/d/11FMG2KlNigZkMhmdlHo1KynNAP8cY4hYEJCtYXBPsCI/edit).
+There are also more detailed documents to detail use cases for the [trade negotiations case study](https://docs.google.com/document/d/11FMG2KlNigZkMhmdlHo1KynNAP8cY4hYEJCtYXBPsCI/edit).
 
 ### Discussion
 
@@ -48,76 +50,23 @@ Let's look at a query for five  matches amongst ``Organizations`` sorted by the 
 
 The syntax for this query is the [Metaweb Query Language](http://wiki.freebase.com/wiki/MQL) used by Freebase to formulate graph queries against it's knowledge base. It is thus a more powerful variant of the better-known [Refine Reconciliation API](https://github.com/OpenRefine/OpenRefine/wiki/Reconciliation-Service-API) developed by the same team. One feature copied from the reconciliation API is ``queries``, a wrapper list to support bulk requests in the future. The dictionary inside of it is a simple MQL query.
 
-A query using MQL could also make use of link structures within the Popolo data, if the backend supports such queries:
-
-```json
-{
-    "queries": {
-        "q0": {
-            "type": "popolo:Person",
-            "memberships": {
-                "organization": {
-                    "name": "Big Corp",
-                    "type": "popolo:Organization"
-                },
-                "*": null
-            },
-            "*": null,
-            "limit": 5,
-        }
-    }
-}
-```
+A query using MQL could also make use of link structures within the Popolo data, if the backend supports such queries.
 
 This attempts to find all persons who are members of an organization with the given name. Because of the wildcard queries (``*``), all properties of the person and membership will be returned.
 
 ### Response format
 
-A simple response would return the requested entity information in Popolo format, with sources information on a per-record level included:
-
-```json
-{
-    "queries": {
-        "q0": {
-            "hits": 234,
-            "result": [
-                {
-                    "id": "http://dirtlist.com/companies/us_de/123456",
-                    "identifiers": [
-                        {
-                            "identifier": "123456789",
-                            "scheme": "http://dirtlist.com/companies/us_de"
-                        },
-                        {
-                            "identifier": "123456789",
-                            "scheme": "DUNS"
-                        }
-                    ],
-                    "name": "Big Corporation",
-                    "score": 14.601182,
-                    "sources": [
-                      {
-                        "url": "https://delecorp.delaware.gov/eCorp/LoginAnnualReportsCLF"
-                      }
-                    ]
-                },
-                [...]
-            ]
-        }
-    },
-    "status": "200 OK"
-}
-```
+A simple response would return the requested entity information in Popolo format, with sources information on a per-record level included.
 
 Given the diverse nature of data providers and use cases, the API supports different response detail levels:
 
-* Full data resonses will return a structured data record or set of records to match the query.
+* Full data responses will return a structured data record or set of records to match the query.
 * Reference lists return data maintained by the service may not be fully structured (such as relevant plain-text documents). The returned information is limited to document references which can be accessed by a human researcher.
 * Information holder contact, in scenarios where the result data itself cannot be shared, contact information for the person holding the relevant material should be indicated.
 
 ### API conventions
 
-* All requests are sent as JSON queries over HTTP. They can use either the GET method (and a ``query=`` argument) or the request body of a POST request. Responses are assumed to be formatted in JSON, even if the result is an error.
+* All requests are sent as JSON queries over HTTP. They can use either the GET method (and a ``queries=`` argument) or the request body of a POST request. Responses are assumed to be formatted in JSON, even if the result is an error.
 * Data providers are free to supply links to other resources on their platform, outside of the existing request endpoint. 
 * All of the proposed API will rely on the Popolo specification and Freebase MQL as far as possible, and any further additions, extensions and standards will be documented in this repository.
 
